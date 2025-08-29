@@ -9,13 +9,13 @@ import torch
 from torch.nn import MSELoss
 from tqdm import tqdm
 
-from diffdrr import DRR, load_example_ct
+from diffdrr import DRR, load_example_mr
 from diffdrr.metrics import XCorr2, geodesic
 
 
 def get_true_drr():
     """Get parameters for the fixed DRR."""
-    volume, spacing = load_example_ct()
+    volume, spacing = load_example_mr()
     bx, by, bz = torch.tensor(volume.shape) * torch.tensor(spacing) / 2
     true_params = {
         "sdr": 200.0,

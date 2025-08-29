@@ -2,13 +2,15 @@ import matplotlib.pyplot as plt
 import torch
 
 from diffdrr.drr import DRR
-from diffdrr.data import load_example_mr
+
+#from diffdrr.data import load_example_mr
+
 from diffdrr.data import load_example_mammo
 from diffdrr.visualization import plot_drr
 
 # Read in the volume and get its origin and spacing in world coordinates
-subject = load_example_mr()
-#subject = load_example_mammo()
+#subject = load_example_mr()
+subject = load_example_mammo()
 
 '''The pixel dimensions of the rendered DRR = height × width (e.g., 200 × 200 px).
 The physical extent of the detector in world space = pixel count × pixel spacing.
