@@ -2,11 +2,13 @@ import matplotlib.pyplot as plt
 import torch
 
 from diffdrr.drr import DRR
-from diffdrr.data import load_example_ct
+from diffdrr.data import load_example_mr
+from diffdrr.data import load_example_mammo
 from diffdrr.visualization import plot_drr
 
 # Read in the volume and get its origin and spacing in world coordinates
-subject = load_example_ct()
+subject = load_example_mr()
+#subject = load_example_mammo()
 
 # Initialize the DRR module for generating synthetic X-rays
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -18,7 +20,7 @@ drr = DRR(
 ).to(device)
 
 # Set the camera pose with rotations (yaw, pitch, roll) and translations (x, y, z)
-rotations = torch.tensor([[0.0, 0.0, 0.0]], device=device)
+rotations = torch.tensor([[0.0, 50.0, 0.0]], device=device)
 translations = torch.tensor([[0.0, 850.0, 0.0]], device=device)
 
 # 📸 Also note that DiffDRR can take many representations of SO(3) 📸

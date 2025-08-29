@@ -1,0 +1,23 @@
+When working with TorchIO, a Subject can contain either 2D or 3D images,
+but it is primarily designed and optimized for 3D medical images.
+For 2D data, the image should be represented in a 4D tensor format,
+typically by adding a singleton dimension for depth.
+
+
+import torchio as tio
+import numpy as np
+import torch
+
+# Create a dummy 2D image represented as a PyTorch tensor
+# Original shape: (channels, height, width) -> (3, 256, 256) for an RGB image
+image_2d_tensor = torch.rand(3, 256, 256)
+
+# Add a singleton dimension for depth to make it 4D
+image_2d_4d_tensor = image_2d_tensor.unsqueeze(3) # Shape becomes (3, 256, 256, 1)
+
+# Create a Subject with the 2D image
+subject_2d = tio.Subject(
+    image=tio.ScalarImage(tensor=image_2d_4d_tensor),
+)
+
+print(subject_2d.image.shape)

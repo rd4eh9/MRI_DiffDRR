@@ -13,10 +13,11 @@ from torchio import LabelMap, ScalarImage, Subject
 from torchio.transforms import Resample
 
 # %% auto 0
-__all__ = ['load_example_ct', 'read']
+__all__ = ['load_example_mammo','load_example_mr', 'read']
+#__all__ = ['load_example_mr', 'read']
 
 # %% ../notebooks/api/03_data.ipynb 5
-def load_example_ct(
+def load_example_mr(
     labels=None,
     orientation="AP",
     bone_attenuation_multiplier=1.0,
@@ -24,9 +25,31 @@ def load_example_ct(
 ) -> Subject:
     """Load an example chest CT for demonstration purposes."""
     datadir = Path(__file__).resolve().parent / "data"
-    volume = datadir / "cxr.nii.gz"
+    volume = datadir / "/Users/Shared/Data/breastMammoMRI/BCMMR_001/MRIpreRx/13_t1_vibe_fs_SAG_RIGHT_POST" # "cxr.nii.gz"
     labelmap = datadir / "mask.nii.gz"
     structures = pd.read_csv(datadir / "structures.csv")
+    return read(
+        volume,
+        labelmap,
+        labels,
+        orientation=orientation,
+        bone_attenuation_multiplier=bone_attenuation_multiplier,
+        structures=structures,
+        **kwargs,
+    )
+
+def load_example_mammo(
+    labels=None,
+    orientation="AP",
+    bone_attenuation_multiplier=1.0,
+    **kwargs,
+) -> Subject:
+    """Load an example mammogram for demonstration purposes."""
+    datadir = Path(__file__).resolve().parent / "data"
+    volume = datadir / "/Users/Shared/Data/breastMammoMRI/BCMMR_001/right_CC.dcm" # "cxr.nii.gz"
+    labelmap = datadir / "mask.nii.gz"
+    structures = pd.read_csv(datadir / "structures.csv") if (datadir / "structures.csv").exists() else None
+
     return read(
         volume,
         labelmap,
