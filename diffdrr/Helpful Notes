@@ -21,3 +21,13 @@ subject_2d = tio.Subject(
 )
 
 print(subject_2d.image.shape)
+
+#########################
+height=200
+→ Fixes the output image height to 200 pixels.
+If you don’t provide width, the image is square, so width = height = 200 px.
+If you did provide width, it would be height × width.
+delx=2.0 (detector pixel spacing, mm)
+→ Sets the physical size of each pixel on the synthetic detector.
+For example, with 200 px × 2.0 mm, the detector’s field of view = 400 mm across.
+This doesn’t change the pixel count of the image, but it does change how large the anatomy looks (zoom in/out effect).
