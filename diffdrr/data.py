@@ -25,8 +25,8 @@ def load_example_mr(
 ) -> Subject:
     """Load an example breast mri for demonstration purposes."""
     datadir = Path(__file__).resolve().parent / "data"
-    volume = datadir / "/Users/rcdeo/PycharmProjects/MRI_DiffDRR/br_mri/BreastDx-01-0001/MRI_views/MR_1"
-    #lab volume = datadir / "/Users/Shared/Data/breastMammoMRI/BCMMR_001/MRIpreRx/13_t1_vibe_fs_SAG_RIGHT_POST"
+    # laptop volume = datadir / "/Users/rcdeo/PycharmProjects/MRI_DiffDRR/br_mri/BreastDx-01-0001/MRI_views/MR_1"
+    volume = datadir / "/Users/Shared/Data/breastMammoMRI/BCMMR_001/MRIpreRx/13_t1_vibe_fs_SAG_RIGHT_POST"
     labelmap = datadir / "mask.nii.gz"
     structures = pd.read_csv(datadir / "structures.csv")
     return read(
@@ -47,8 +47,8 @@ def load_example_mammo(
 ) -> Subject:
     """Load an example mammogram for demonstration purposes."""
     datadir = Path(__file__).resolve().parent / "data"
-    volume = datadir / "C:/Users/rcdeo/PycharmProjects/MRI_DiffDRR/br_mammo/TCGA-3C-AAAU/2.25.227261840503961430496812955999336758586/br_mammo1/br_mammo_ex1.dcm"  # "cxr.nii.gz"
-    # lab volume = datadir / "/Users/Shared/Data/breastMammoMRI/BCMMR_001/right_CC.dcm" # "cxr.nii.gz"
+    #laptop volume = datadir / "C:/Users/rcdeo/PycharmProjects/MRI_DiffDRR/br_mammo/TCGA-3C-AAAU/2.25.227261840503961430496812955999336758586/br_mammo1/br_mammo_ex1.dcm"  # "cxr.nii.gz"
+    volume = datadir / "/Users/Shared/Data/breastMammoMRI/BCMMR_001/mammo_right" # "cxr.nii.gz"
     labelmap = datadir / "mask.nii.gz"
     structures = pd.read_csv(datadir / "structures.csv") if (datadir / "structures.csv").exists() else None
 
