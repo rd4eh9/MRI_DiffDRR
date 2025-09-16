@@ -7,7 +7,6 @@ __all__ = ['resample', 'get_pinhole_camera']
 import torch
 from kornia.geometry.transform import center_crop, resize, translate
 
-
 def resample(
     img: torch.Tensor,
     focal_len: float,
